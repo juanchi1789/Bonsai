@@ -4,7 +4,6 @@
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
-                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -120,431 +119,54 @@ def process(value):
   return False</scr:Script>
         </Builder>
       </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:FileCapture">
-            <cv:FileName>C:\Users\labFA\Desktop\JUAN\VIdeos\HembraCeleste-Naranjacon criasWIN_20210302_09_57_24_Pro.mp4</cv:FileName>
-            <cv:PlaybackRate>0</cv:PlaybackRate>
-            <cv:StartPosition>0</cv:StartPosition>
-            <cv:PositionUnits>Frames</cv:PositionUnits>
-            <cv:Loop>false</cv:Loop>
-            <cv:Playing>false</cv:Playing>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:Crop">
-            <cv:RegionOfInterest>
-              <cv:X>208</cv:X>
-              <cv:Y>63</cv:Y>
-              <cv:Width>848</cv:Width>
-              <cv:Height>543</cv:Height>
-            </cv:RegionOfInterest>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:ConvertColor">
-            <cv:Conversion>Rgb2Hsv</cv:Conversion>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:HsvThreshold">
-            <cv:Lower>
-              <cv:Val0>0</cv:Val0>
-              <cv:Val1>88</cv:Val1>
-              <cv:Val2>85</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Lower>
-            <cv:Upper>
-              <cv:Val0>14</cv:Val0>
-              <cv:Val1>255</cv:Val1>
-              <cv:Val2>160</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Upper>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:FindContours">
-            <cv:Mode>External</cv:Mode>
-            <cv:Method>ChainApproxNone</cv:Method>
-            <cv:Offset>
-              <cv:X>0</cv:X>
-              <cv:Y>0</cv:Y>
-            </cv:Offset>
-            <cv:MinArea xsi:nil="true" />
-            <cv:MaxArea xsi:nil="true" />
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:BinaryRegionAnalysis" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:LargestBinaryRegion" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:Centroid" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="GroupWorkflow">
-          <Name>AZUL</Name>
-          <Workflow>
-            <Nodes>
-              <Expression xsi:type="WorkflowInput">
-                <Name>Source1</Name>
-              </Expression>
-              <Expression xsi:type="MemberSelector">
-                <Selector>X,Y</Selector>
-              </Expression>
-              <Expression xsi:type="WorkflowOutput" />
-            </Nodes>
-            <Edges>
-              <Edge From="0" To="1" Label="Source1" />
-              <Edge From="1" To="2" Label="Source1" />
-            </Edges>
-          </Workflow>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:ConvertColor">
-            <cv:Conversion>Bgr2Hsv</cv:Conversion>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:HsvThreshold">
-            <cv:Lower>
-              <cv:Val0>134</cv:Val0>
-              <cv:Val1>89</cv:Val1>
-              <cv:Val2>96</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Lower>
-            <cv:Upper>
-              <cv:Val0>10</cv:Val0>
-              <cv:Val1>255</cv:Val1>
-              <cv:Val2>255</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Upper>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:FindContours">
-            <cv:Mode>External</cv:Mode>
-            <cv:Method>ChainApproxNone</cv:Method>
-            <cv:Offset>
-              <cv:X>0</cv:X>
-              <cv:Y>0</cv:Y>
-            </cv:Offset>
-            <cv:MinArea xsi:nil="true" />
-            <cv:MaxArea xsi:nil="true" />
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:BinaryRegionAnalysis" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:LargestBinaryRegion" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:Centroid" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="GroupWorkflow">
-          <Name>ROJA</Name>
-          <Workflow>
-            <Nodes>
-              <Expression xsi:type="WorkflowInput">
-                <Name>Source1</Name>
-              </Expression>
-              <Expression xsi:type="MemberSelector">
-                <Selector>X,Y</Selector>
-              </Expression>
-              <Expression xsi:type="WorkflowOutput" />
-            </Nodes>
-            <Edges>
-              <Edge From="0" To="1" Label="Source1" />
-              <Edge From="1" To="2" Label="Source1" />
-            </Edges>
-          </Workflow>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:Crop">
-            <cv:RegionOfInterest>
-              <cv:X>247</cv:X>
-              <cv:Y>0</cv:Y>
-              <cv:Width>214</cv:Width>
-              <cv:Height>32</cv:Height>
-            </cv:RegionOfInterest>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:ConvertColor">
-            <cv:Conversion>Rgb2Hsv</cv:Conversion>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:HsvThreshold">
-            <cv:Lower>
-              <cv:Val0>0</cv:Val0>
-              <cv:Val1>88</cv:Val1>
-              <cv:Val2>85</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Lower>
-            <cv:Upper>
-              <cv:Val0>14</cv:Val0>
-              <cv:Val1>255</cv:Val1>
-              <cv:Val2>160</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Upper>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:FindContours">
-            <cv:Mode>External</cv:Mode>
-            <cv:Method>ChainApproxNone</cv:Method>
-            <cv:Offset>
-              <cv:X>0</cv:X>
-              <cv:Y>0</cv:Y>
-            </cv:Offset>
-            <cv:MinArea xsi:nil="true" />
-            <cv:MaxArea xsi:nil="true" />
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:BinaryRegionAnalysis" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:LargestBinaryRegion" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:Centroid" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="GroupWorkflow">
-          <Name>IZQ</Name>
-          <Workflow>
-            <Nodes>
-              <Expression xsi:type="WorkflowInput">
-                <Name>Source1</Name>
-              </Expression>
-              <Expression xsi:type="MemberSelector">
-                <Selector>X,Y</Selector>
-              </Expression>
-              <Expression xsi:type="WorkflowOutput" />
-            </Nodes>
-            <Edges>
-              <Edge From="0" To="1" Label="Source1" />
-              <Edge From="1" To="2" Label="Source1" />
-            </Edges>
-          </Workflow>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:Crop">
-            <cv:RegionOfInterest>
-              <cv:X>487</cv:X>
-              <cv:Y>0</cv:Y>
-              <cv:Width>188</cv:Width>
-              <cv:Height>23</cv:Height>
-            </cv:RegionOfInterest>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:ConvertColor">
-            <cv:Conversion>Rgb2Hsv</cv:Conversion>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:HsvThreshold">
-            <cv:Lower>
-              <cv:Val0>0</cv:Val0>
-              <cv:Val1>88</cv:Val1>
-              <cv:Val2>85</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Lower>
-            <cv:Upper>
-              <cv:Val0>14</cv:Val0>
-              <cv:Val1>255</cv:Val1>
-              <cv:Val2>160</cv:Val2>
-              <cv:Val3>0</cv:Val3>
-            </cv:Upper>
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:FindContours">
-            <cv:Mode>External</cv:Mode>
-            <cv:Method>ChainApproxNone</cv:Method>
-            <cv:Offset>
-              <cv:X>0</cv:X>
-              <cv:Y>0</cv:Y>
-            </cv:Offset>
-            <cv:MinArea xsi:nil="true" />
-            <cv:MaxArea xsi:nil="true" />
-          </Combinator>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:BinaryRegionAnalysis" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:LargestBinaryRegion" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="cv:Centroid" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="GroupWorkflow">
-          <Name>DER</Name>
-          <Workflow>
-            <Nodes>
-              <Expression xsi:type="WorkflowInput">
-                <Name>Source1</Name>
-              </Expression>
-              <Expression xsi:type="MemberSelector">
-                <Selector>X,Y</Selector>
-              </Expression>
-              <Expression xsi:type="WorkflowOutput" />
-            </Nodes>
-            <Edges>
-              <Edge From="0" To="1" Label="Source1" />
-              <Edge From="1" To="2" Label="Source1" />
-            </Edges>
-          </Workflow>
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="Combinator">
-          <Combinator xsi:type="rx:Zip" />
-        </Builder>
-      </Expression>
-      <Expression xsi:type="Disable">
-        <Builder xsi:type="scr:PythonTransform">
-          <scr:Script>'''
-Tenemos el vector en el siguiente orden:
-ZIP = ROJO (RATA 1), AZUL (RATA 2),NOXEPOKE IZQ, NOSEPOKE DER
-
-------NP IZQ----NP DER-----
-        }         }
-        }         }
-        }         }
-        }         }
-
-LA ROI TIENE UN LARGO ARBITRARIO (CHICO) Y UN ANCHO QUE EQUIVALE AL ANCHO DE LOS NOSEPOKES
-
-EN ESTE CASO EN PARTICULAR, LA RATA 1 TIENE QUE ENTRAR EN EL NOSEPOKE IZQUIERDO Y LA RATA 2 TIENE QUE ENTRAR EN EL DERECHO
-'''
-
-@returns(bool)
-def process(value):
-    ancho = 140
-    largo = 150
-    rat_1  = value[0]# ROJO
-    rat_2  = value[1]# AZUL
-    np_izq = value[2]
-    np_der = value[3]
-
-    if  np_izq[0]-ancho/2 &lt; rat_1[0] &lt; np_izq[0]+ancho/2 and np_izq[1] &lt; rat_1[1] &lt; np_izq[1]+largo and np_der[0]-ancho/2 &lt; rat_2[0] &lt; np_der[0]+ancho/2 and np_der[1] &lt; rat_2[1] &lt; np_der[1]+largo:
-        return True # ESTO ES EL ORIGINAL
-
-    '''if  np_izq[0]-ancho/2 &lt; rat_1[0] &lt; np_izq[0]+ancho/2 and np_izq[1] &lt; rat_1[1] &lt; np_izq[1]+largo:
-        return True # ESTO ES EL ORIGINAL'''
-
-
-
-</scr:Script>
-        </Builder>
-      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:FileCapture">
-          <cv:FileName>C:\Users\labFA\Desktop\JUAN\VIdeos\HembraCeleste-Naranjacon criasWIN_20210302_09_57_24_Pro.mp4</cv:FileName>
-          <cv:PlaybackRate>0</cv:PlaybackRate>
+          <cv:FileName>JUANCHI\videos\chalecos01.avi</cv:FileName>
+          <cv:PlaybackRate>60</cv:PlaybackRate>
           <cv:StartPosition>0</cv:StartPosition>
           <cv:PositionUnits>Frames</cv:PositionUnits>
           <cv:Loop>false</cv:Loop>
-          <cv:Playing>false</cv:Playing>
+          <cv:Playing>true</cv:Playing>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:Crop">
           <cv:RegionOfInterest>
-            <cv:X>208</cv:X>
-            <cv:Y>63</cv:Y>
-            <cv:Width>848</cv:Width>
-            <cv:Height>543</cv:Height>
+            <cv:X>0</cv:X>
+            <cv:Y>0</cv:Y>
+            <cv:Width>0</cv:Width>
+            <cv:Height>0</cv:Height>
           </cv:RegionOfInterest>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:ConvertColor">
-          <cv:Conversion>Rgb2Hsv</cv:Conversion>
+          <cv:Conversion>Bgr2Hsv</cv:Conversion>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:HsvThreshold">
           <cv:Lower>
             <cv:Val0>0</cv:Val0>
-            <cv:Val1>88</cv:Val1>
-            <cv:Val2>85</cv:Val2>
+            <cv:Val1>255</cv:Val1>
+            <cv:Val2>184</cv:Val2>
             <cv:Val3>0</cv:Val3>
           </cv:Lower>
           <cv:Upper>
-            <cv:Val0>14</cv:Val0>
-            <cv:Val1>255</cv:Val1>
-            <cv:Val2>160</cv:Val2>
+            <cv:Val0>0</cv:Val0>
+            <cv:Val1>225</cv:Val1>
+            <cv:Val2>161</cv:Val2>
             <cv:Val3>0</cv:Val3>
           </cv:Upper>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:Smooth">
+          <cv:SmoothType>Median</cv:SmoothType>
+          <cv:Size1>9</cv:Size1>
+          <cv:Size2>5</cv:Size2>
+          <cv:Sigma1>0</cv:Sigma1>
+          <cv:Sigma2>0</cv:Sigma2>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -552,38 +174,38 @@ def process(value):
           <cv:Regions>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>322</cv:X>
-                <cv:Y>44</cv:Y>
+                <cv:X>107</cv:X>
+                <cv:Y>18</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>504</cv:X>
-                <cv:Y>44</cv:Y>
+                <cv:X>289</cv:X>
+                <cv:Y>18</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>504</cv:X>
-                <cv:Y>400</cv:Y>
+                <cv:X>289</cv:X>
+                <cv:Y>374</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>322</cv:X>
-                <cv:Y>400</cv:Y>
+                <cv:X>107</cv:X>
+                <cv:Y>374</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>538</cv:X>
-                <cv:Y>45</cv:Y>
+                <cv:X>389</cv:X>
+                <cv:Y>32</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>711</cv:X>
-                <cv:Y>45</cv:Y>
+                <cv:X>562</cv:X>
+                <cv:Y>32</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>711</cv:X>
-                <cv:Y>399</cv:Y>
+                <cv:X>562</cv:X>
+                <cv:Y>386</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>538</cv:X>
-                <cv:Y>399</cv:Y>
+                <cv:X>389</cv:X>
+                <cv:Y>386</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
           </cv:Regions>
@@ -593,12 +215,6 @@ def process(value):
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:RoiActivityDetected">
           <cv:Index>0</cv:Index>
-          <cv:Threshold>20</cv:Threshold>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="cv:RoiActivityDetected">
-          <cv:Index>1</cv:Index>
           <cv:Threshold>20</cv:Threshold>
         </Combinator>
       </Expression>
@@ -624,42 +240,51 @@ def process(value):
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:Smooth">
+          <cv:SmoothType>Median</cv:SmoothType>
+          <cv:Size1>9</cv:Size1>
+          <cv:Size2>5</cv:Size2>
+          <cv:Sigma1>0</cv:Sigma1>
+          <cv:Sigma2>0</cv:Sigma2>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:RoiActivity">
           <cv:Regions>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>322</cv:X>
-                <cv:Y>44</cv:Y>
+                <cv:X>107</cv:X>
+                <cv:Y>18</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>504</cv:X>
-                <cv:Y>44</cv:Y>
+                <cv:X>289</cv:X>
+                <cv:Y>18</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>504</cv:X>
-                <cv:Y>400</cv:Y>
+                <cv:X>289</cv:X>
+                <cv:Y>374</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>322</cv:X>
-                <cv:Y>400</cv:Y>
+                <cv:X>107</cv:X>
+                <cv:Y>374</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
             <cv:ArrayOfPoint>
               <cv:Point>
-                <cv:X>538</cv:X>
-                <cv:Y>45</cv:Y>
+                <cv:X>389</cv:X>
+                <cv:Y>32</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>711</cv:X>
-                <cv:Y>45</cv:Y>
+                <cv:X>562</cv:X>
+                <cv:Y>32</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>711</cv:X>
-                <cv:Y>399</cv:Y>
+                <cv:X>562</cv:X>
+                <cv:Y>386</cv:Y>
               </cv:Point>
               <cv:Point>
-                <cv:X>538</cv:X>
-                <cv:Y>399</cv:Y>
+                <cv:X>389</cv:X>
+                <cv:Y>386</cv:Y>
               </cv:Point>
             </cv:ArrayOfPoint>
           </cv:Regions>
@@ -668,18 +293,9 @@ def process(value):
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:RoiActivityDetected">
-          <cv:Index>0</cv:Index>
-          <cv:Threshold>20</cv:Threshold>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="cv:RoiActivityDetected">
           <cv:Index>1</cv:Index>
-          <cv:Threshold>20</cv:Threshold>
+          <cv:Threshold>2060</cv:Threshold>
         </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="rx:Concat" />
       </Expression>
     </Nodes>
     <Edges>
@@ -690,56 +306,16 @@ def process(value):
       <Edge From="5" To="6" Label="Source1" />
       <Edge From="6" To="7" Label="Source1" />
       <Edge From="8" To="9" Label="Source1" />
-      <Edge From="8" To="24" Label="Source1" />
-      <Edge From="8" To="32" Label="Source1" />
       <Edge From="9" To="10" Label="Source1" />
-      <Edge From="9" To="17" Label="Source1" />
+      <Edge From="9" To="15" Label="Source1" />
       <Edge From="10" To="11" Label="Source1" />
       <Edge From="11" To="12" Label="Source1" />
       <Edge From="12" To="13" Label="Source1" />
       <Edge From="13" To="14" Label="Source1" />
-      <Edge From="14" To="15" Label="Source1" />
       <Edge From="15" To="16" Label="Source1" />
-      <Edge From="16" To="40" Label="Source2" />
+      <Edge From="16" To="17" Label="Source1" />
       <Edge From="17" To="18" Label="Source1" />
       <Edge From="18" To="19" Label="Source1" />
-      <Edge From="19" To="20" Label="Source1" />
-      <Edge From="20" To="21" Label="Source1" />
-      <Edge From="21" To="22" Label="Source1" />
-      <Edge From="22" To="23" Label="Source1" />
-      <Edge From="23" To="40" Label="Source1" />
-      <Edge From="24" To="25" Label="Source1" />
-      <Edge From="25" To="26" Label="Source1" />
-      <Edge From="26" To="27" Label="Source1" />
-      <Edge From="27" To="28" Label="Source1" />
-      <Edge From="28" To="29" Label="Source1" />
-      <Edge From="29" To="30" Label="Source1" />
-      <Edge From="30" To="31" Label="Source1" />
-      <Edge From="31" To="40" Label="Source3" />
-      <Edge From="32" To="33" Label="Source1" />
-      <Edge From="33" To="34" Label="Source1" />
-      <Edge From="34" To="35" Label="Source1" />
-      <Edge From="35" To="36" Label="Source1" />
-      <Edge From="36" To="37" Label="Source1" />
-      <Edge From="37" To="38" Label="Source1" />
-      <Edge From="38" To="39" Label="Source1" />
-      <Edge From="39" To="40" Label="Source4" />
-      <Edge From="40" To="41" Label="Source1" />
-      <Edge From="42" To="43" Label="Source1" />
-      <Edge From="43" To="44" Label="Source1" />
-      <Edge From="43" To="49" Label="Source1" />
-      <Edge From="44" To="45" Label="Source1" />
-      <Edge From="45" To="46" Label="Source1" />
-      <Edge From="46" To="47" Label="Source1" />
-      <Edge From="46" To="48" Label="Source1" />
-      <Edge From="47" To="54" Label="Source1" />
-      <Edge From="48" To="54" Label="Source2" />
-      <Edge From="49" To="50" Label="Source1" />
-      <Edge From="50" To="51" Label="Source1" />
-      <Edge From="51" To="52" Label="Source1" />
-      <Edge From="51" To="53" Label="Source1" />
-      <Edge From="52" To="54" Label="Source3" />
-      <Edge From="53" To="54" Label="Source4" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
